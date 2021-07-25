@@ -1,4 +1,4 @@
-char	*strnstr(const char *str, const char *tofind, size_t n)
+char	*ft_strnstr(const char *str, const char *tofind, size_t n)
 {
 	int		i;
 	int		j;
