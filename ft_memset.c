@@ -1,4 +1,4 @@
-void	*ft_memset (void *tab, int c, size_t n);
+void    *ft_memset(void *tab, int c, size_t n)
 {
     while (n)
     {
