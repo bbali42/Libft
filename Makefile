@@ -1,8 +1,7 @@
 NAME	= libft.a
 
-SRC		=	#Part 1
-			ft_atoi.c \
-			ft_bzero.c 
+SRC		=	ft_atoi.c \ #Part 1
+			ft_bzero.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
@@ -28,7 +27,12 @@ SRC		=	#Part 1
 			ft_strnstr.c \
 			ft_strrchr.c \
 			ft_tolower.c \
-			ft_toupper.c
+			ft_toupper.c \
+			ft_substr.c \ #Part 2
+			ft_strjoin.c \
+			ft_strtrim.c \
+			ft_split.c
+
 
 OBJ		= $(SRC:.c=.o)
 CMP		= gcc
