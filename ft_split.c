@@ -1,23 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbali <bbali@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/22 12:46:16 by bbali             #+#    #+#             */
+/*   Updated: 2021/12/01 17:53:55 by bbali            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_nb_strs(char const *str, char set)
+static	int	ft_nb_strs(char const *str, char set)
 {
 	int		count;
 
 	count = 0;
-	while (*str && *str == set)
-		str++;
-	if (*str && *str != set)
+	while (*str)
 	{
-		count++;
-		while (*str && *str != set)
+		while (*str && *str == set)
 			str++;
+		if (*str && *str != set)
+		{
+			count++;
+			while (*str && *str != set)
+				str++;
+		}
 	}
-	
 	return (count);
 }
 
-char	*ft_malloc_str(char const *str, char set)
+static	char	*ft_malloc_str(char const *str, char set)
 {
 	char	*res;
 	int		i;
@@ -26,6 +40,8 @@ char	*ft_malloc_str(char const *str, char set)
 	while (str[i] && str[i] != set)
 		i++;
 	res = (char *)malloc(sizeof(char) * (i + 1));
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != set)
 	{
@@ -42,6 +58,8 @@ char	**ft_split(char const *s, char c)
 	char	**res;	
 
 	res = (char **)malloc(sizeof(char *) * (ft_nb_strs(s, c) + 1));
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (*s)
 	{

@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbali <bbali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 12:45:11 by bbali             #+#    #+#             */
-/*   Updated: 2021/11/24 12:46:11 by bbali            ###   ########.fr       */
+/*   Created: 2021/11/26 12:08:00 by bbali             #+#    #+#             */
+/*   Updated: 2021/11/26 12:19:20 by bbali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	t_list	*tmp;
+
+	if (!*alst)
+		*alst = new;
+	else
+	{
+		tmp = ft_lstlast(*(alst));
+		tmp->next = new;
+	}
 }

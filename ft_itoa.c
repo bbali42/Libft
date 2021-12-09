@@ -1,41 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbali <bbali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 12:46:30 by bbali             #+#    #+#             */
-/*   Updated: 2021/11/26 09:24:10 by bbali            ###   ########.fr       */
+/*   Created: 2021/11/24 14:33:05 by bbali             #+#    #+#             */
+/*   Updated: 2021/12/02 16:33:47 by bbali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static	int	ft_nbrlen(long nbr)
 {
-	char	*res;
-	int		i;
-	int		j;
+	int		count;
 
-	if (!s1 || !s2)
-		return (NULL);
-	res = (char *)malloc(sizeof(char) * \
-			(ft_strlen(s1) + ft_strlen(s2) + 1));
+	count = 0;
+	if (nbr == 0)
+		return (1);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		count++;
+	}
+	while (nbr > 0)
+	{
+		count++;
+		nbr /= 10;
+	}
+	return (count);
+}
+
+char	*ft_itoa(int n)
+{
+	long	nb;
+	char	*res;
+	int		len;
+
+	nb = n;
+	len = ft_nbrlen(nb);
+	res = (char *)malloc(sizeof(char) * len + 1);
 	if (!res)
 		return (NULL);
-	i = 0;
-	while (s1[i])
+	res[len--] = '\0';
+	if (nb == 0)
+		res[0] = 48;
+	else if (nb < 0)
 	{
-		res[i] = s1[i];
-		i++;
+		res[0] = '-';
+		nb *= -1;
 	}
-	j = 0;
-	while (s2[j])
+	while (nb > 0)
 	{
-		res[i + j] = s2[j];
-		j++;
+		res[len] = nb % 10 + 48;
+		nb /= 10;
+		len--;
 	}
-	res[i + j] = '\0';
 	return (res);
 }
