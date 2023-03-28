@@ -6,7 +6,7 @@
 #    By: bbali <bbali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 17:54:56 by bbali             #+#    #+#              #
-#    Updated: 2021/12/03 16:43:02 by bbali            ###   ########.fr        #
+#    Updated: 2023/03/28 18:11:18 by bbali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ MANDATORY	= 	ft_isalpha.c \
 				ft_putchar_fd.c \
 				ft_putstr_fd.c \
 				ft_putendl_fd.c \
-				ft_putnbr_fd.c 
+				ft_putnbr_fd.c  \
+				ft_strcspn.c
 
 BONUS		=	ft_lstnew.c \
 				ft_lstadd_front.c \
